@@ -17,10 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+/*
 route::get('cartas', [
     CartaController::class, 'index'
 ])->name('cartas.index');
+
+route::get('cartas/{carta}', [
+    CartaController::class, 'show'
+])->name('cartas.show');*/
+
+Route::resource('cartas', CartaController::class);
 
 Auth::routes();
 

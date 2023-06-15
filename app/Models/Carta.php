@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Carta extends Model
 {
     use HasFactory;
-
-    protected $table = 'carta';
+    public $timestamps = false;
+    protected $fillable = [
+        'nombre',
+        'ataque',
+        'salud',
+        'img_grande',
+        'img_chica',
+        'img_sola',
+        'id_set'
+    ];
 }
