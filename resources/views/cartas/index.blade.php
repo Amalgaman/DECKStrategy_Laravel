@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section id="baner">
+<section id="baner" class="mt-5">
   <h1 class="text-center p-5">Administrador de Cartas</h1>
 </section>
 
@@ -33,16 +33,15 @@
             <td>{{$carta->nombre}}</td>
             <td>{{$carta->id_set}}</td>
             <td>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-success">Modificar</button>
-                <button type="button" class="btn btn-danger">Eliminar</button>
-                </div>
+                <a href="{{ route('cartas.show', $carta)}}" class="btn btn-success">Ver Carta</a>
             </td>
             </tr>
         @endforeach
 
       </tbody>
     </table>
+
+    {{ $cartas->links() }}
     </div>
   </div>
 </section>

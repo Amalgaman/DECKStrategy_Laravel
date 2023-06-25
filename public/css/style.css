@@ -1,9 +1,9 @@
-/* PARA OCULTAR BARRA DE SCROLL */
+/* PARA OCULTAR BARRA DE SCROLL
 ::-webkit-scrollbar {
     display: none;
     width: 10px;
   }
-  
+
   input[type=number]::-webkit-outer-spin-button,
   input[type=number]::-webkit-inner-spin-button {
       -webkit-appearance: none;
@@ -16,7 +16,7 @@
       -moz-appearance: none;
       appearance: none;
       margin: 0;
-  }
+  }*/
 /* PARA OCULTAR BARRA DE SCROLL */
 
 /* Variables Globales */
@@ -46,9 +46,9 @@ a{
 
 *{
     font-family: 'Montserrat';
-    color: white;
+    /*color: white;*/
   }
-  
+
   body {
     background-color: var(--gris1);
   }
@@ -118,6 +118,10 @@ a{
   }
 
   #tabla-usuarios tbody{
+    background-color: var(--marron2);
+  }
+
+  form , .card{
     background-color: var(--marron2);
   }
 

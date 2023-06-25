@@ -4,32 +4,24 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col">
-            <h1 class="text-center py-5">Guardar Nueva Carta</h1>
+            <h1 class="text-center py-5">Editar Carta</h1>
         </div>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
     </div>
     <div class="row">
         <div class="col justify-content-center">
-            <form class="py-3 px-4"action="{{ route('cartas.store') }}" method="POST">
+            <form class="py-3 px-4" action="{{ route('cartas.update', $carta) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="row mb-2">
                     <div class="col">
                             <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="emailHelp" value="{{old('nombre')}}">
+                            <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="emailHelp" value="{{$carta->nombre}}">
                     </div>
                     <div class="col">
                             <label for="id_set" class="form-label">Set</label>
                         <select class="form-select" aria-label="Default select example" name="id_set" id="id_set">
                             @foreach ($sets as $set)
-                                <option value="{{$set->id}}">{{$set->nombre}}</option>
+                                <option @if($set->id == $carta->id_set) selected @endif value="{{$set->id}}">{{$set->nombre}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -37,11 +29,11 @@
                 <div class="row mb-2">
                     <div class="col-1">
                             <label for="exampleInputEmail1" class="form-label">Ataque</label>
-                            <input type="number" class="form-control" name="ataque" id="ataque" aria-describedby="emailHelp" value="{{old('ataque')}}">
+                            <input type="number" class="form-control" name="ataque" id="ataque" aria-describedby="emailHelp" value="{{$carta->ataque}}">
                         </div>
                         <div class="col-1">
                             <label for="exampleInputEmail1" class="form-label">Salud</label>
-                            <input type="number" class="form-control" name="salud" id="salud" aria-describedby="emailHelp">
+                            <input type="number" class="form-control" name="salud" id="salud" aria-describedby="emailHelp" value="{{$carta->salud}}">
                         </div>
                         <div class="col-10 pe-0">
                             <label class="form-label">Color</label>
@@ -83,20 +75,23 @@
                 <div class="row mb-2 ">
                     <div class="col">
                     <label for="exampleInputEmail1" class="form-label">URL Imagen Grande</label>
-                    <input type="text" class="form-control" name="img_grande" id="img_grande" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" name="img_grande" id="img_grande" aria-describedby="emailHelp" value="{{$carta->img_grande}}">
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1" class="form-label">URL Imagen Chica</label>
-                    <input type="text" class="form-control" name="img_chica" id="img_chica" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" name="img_chica" id="img_chica" aria-describedby="emailHelp" value="{{$carta->img_chica}}">
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1" class="form-label">URL Imagen Sola</label>
-                        <input type="text" class="form-control" name="img_sola" id="img_sola" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" name="img_sola" id="img_sola" aria-describedby="emailHelp" value="{{$carta->img_sola}}">
                         </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-6 mx-auto">
                         <button type="submit" class="btn btn-primary w-100">Guardar</button>
+                    </div>
+                    <div class="col-6 mx-auto">
+                        <a href="{{ route('cartas.show', $carta)}}" class="btn btn-danger w-100">Cancelar</a>
                     </div>
                 </div>
             </form>
