@@ -46,9 +46,12 @@ a{
 
 *{
     font-family: 'Montserrat';
-    /*color: white;*/
+    color: white;
   }
 
+  select>option{
+    background-color: var(--gris1);
+  }
   body {
     background-color: var(--gris1);
   }

@@ -8,13 +8,13 @@
 
 <section class="container">
   <div class="row">
-    <div class="col p-3 m-3 filtro-usuario">
-     <form action="">
-      <div class="input-group my-3 ">
-        <input type="text" class="form-control" placeholder="Nombre del Usuario" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
-      </div>
-     </form>
+    <div class="col p-3 m-3">
+        @if(Session ('status'))
+            <div class="alert alert-success">
+                {{ Session('status') }}
+            </div>
+        @endif
+        <a href="{{ route('cartas.create')}}" class="btn btn-primary">Crear Nueva Carta</a>
     </div>
   </div>
   <div class="row">
@@ -22,7 +22,10 @@
     <table class="table" id="tabla-usuarios">
       <thead>
         <tr>
+        <th scope="col">Imagen</th>
           <th scope="col">Nombre</th>
+          <th scope="col">Ataque</th>
+          <th scope="col">Salud</th>
           <th scope="col">Set</th>
           <th scope="col">Acciones</th>
         </tr>
@@ -30,10 +33,15 @@
       <tbody>
         @foreach ($cartas as $carta)
             <tr>
+            <td>
+                <img class="img-fluid" src="{{$carta->img_chica}}" alt="Bootstrap" width="40" height="27">
+            </td>
             <td>{{$carta->nombre}}</td>
+            <td>{{$carta->ataque}}</td>
+            <td>{{$carta->salud}}</td>
             <td>{{$carta->id_set}}</td>
             <td>
-                <a href="{{ route('cartas.show', $carta)}}" class="btn btn-success">Ver Carta</a>
+                <a href="{{ route('cartas.show', $carta)}}" class="btn btn-success" target="_blank">Ver Carta</a>
             </td>
             </tr>
         @endforeach
