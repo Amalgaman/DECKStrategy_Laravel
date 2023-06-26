@@ -97,6 +97,39 @@ class CartaController extends Controller
     }
 
     public function update(Request $request, Carta $carta){
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|max:255',
+            'id_set' => 'required|integer|min:1',
+            'ataque' => 'required|integer|min:0',
+            'salud' => 'required|integer|min:0',
+            'img_grande' => 'required|max:255',
+            'img_chica' => 'required|max:255',
+            'img_sola' => 'required|max:255'
+        ],[
+            'nombre.required' => 'El nombre es obligatorio',
+            'id_set.required' => 'El set es obligatorio',
+            'ataque.required' => 'El ataque es obligatorio',
+            'salud.required' => 'La salud es obligatoria',
+            'img_grande.required' => 'La URL de la Imagen Grande es obligatoria',
+            'img_chica.required' => 'La URL de la Imagen Chica es obligatoria',
+            'img_sola.required' => 'La URL de la Imagen Sola es obligatoria',
+            'nombre.max' => 'El nombre execede el maximo de caracteres permitidos',
+            'img_grande.max' => 'La URL de la Imagen Grande execede el maximo de caracteres permitidos',
+            'img_chica.max' => 'La URL de la Imagen Chica execede el maximo de caracteres permitidos',
+            'img_sola.max' => 'La URL de la Imagen Sola execede el maximo de caracteres permitidos',
+            'salud.min' => 'El valor de la Salud debe ser 0 o mayor',
+            'ataque.min' => 'El valor del Ataque debe ser 0 o mayor',
+            'salud.integer' => 'El valor del Ataque debe ser un numero entero',
+            'ataque.integer' => 'El valor del Ataque debe ser un numero entero',
+        ]);
+
+        if($validator->fails()){
+            return redirect()
+                ->route('cartas.edit',$carta)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $carta->update([
             'nombre' => $request->nombre,
             'ataque'=> $request->ataque,
