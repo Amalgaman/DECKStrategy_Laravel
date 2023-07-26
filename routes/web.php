@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CartaController;
+use App\Http\Controllers\BibliotecaController;
+use App\Http\Controllers\MisDecksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('cartas');
+    return redirect('home');
 });
 /*
 route::get('cartas', [
@@ -26,12 +28,21 @@ route::get('cartas/{carta}', [
     CartaController::class, 'show'
 ])->name('cartas.show');*/
 
-Route::resource('cartas', CartaController::class);
+Route::group(['middleware' => ['auth']], function(){
+
+    Route::get('/misdecks', [App\Http\Controllers\MisDecksController::class, 'lista'])->name('misdecks');
+    Route::get('/creador', [App\Http\Controllers\MisDecksController::class, 'creador'])->name('creador');
+
+    Route::group(['middleware' => ['is_admin']], function(){
+       Route::resource('cartas', CartaController::class);
+    });
+});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::get('/biblioteca-c', [App\Http\Controllers\BibliotecaController::class, 'cartas'])->name('biblioteca-c');
+Route::get('/biblioteca-d', [App\Http\Controllers\BibliotecaController::class, 'decks'])->name('biblioteca-d');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

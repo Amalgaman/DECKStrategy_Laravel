@@ -1,0 +1,172 @@
+/* PARA OCULTAR BARRA DE SCROLL
+::-webkit-scrollbar {
+    display: none;
+    width: 10px;
+  }
+
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-moz-number-spin-box {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      margin: 0;
+  }*/
+/* PARA OCULTAR BARRA DE SCROLL */
+
+/* Variables Globales */
+:root {
+  --marron1: #523000;
+  --marron2: #9C5B00;
+  --gris1:#222121;
+  --dorado1:#C97600;
+  --celeste1:#2B7BAD;
+  --celeste2:#70C5FA;
+  --cremita1:#FAC170;
+  --cremita2:#FFCF8C;
+}
+
+.btn.btn-primary{
+  background-color: var(--celeste1);
+  border: #523000;
+}
+
+.btn.btn-primary:hover{
+  background-color: var(--celeste2);
+}
+
+a{
+    text-decoration: none;
+}
+
+*{
+    font-family: 'Montserrat';
+    color: white;
+  }
+
+  select>option{
+    background-color: var(--gris1);
+  }
+  body {
+    background-color: var(--gris1);
+  }
+  nav {
+    background-color: var(--marron1);
+  }
+  a.nav-link{
+    color: white;
+  }
+  a.activo{
+    font-weight: bold;
+  }
+  .nav-link:hover{
+    color: #fd567a;
+  }
+
+  .nav-link.activo:hover{
+    color: #fd567a;
+    text-shadow: 0 0 20px #fa2c8c;
+  }
+
+  #baner{
+    background-image: url(../img/fondo-baner.jpeg);
+    min-height: 10rem;
+
+  }
+  .listamazo{
+    background-color: var(--marron1);
+  }
+
+  .img-logo{
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .img-logo-carta-en-mazo{
+    width: 2rem;
+    height: 2rem;
+  }
+  .carta-en-mazo{
+    background-color: var(--marron1);
+  }
+
+  #deckbuilder{
+    background-color: var(--dorado1);
+  }
+  .card-deck{
+    background-color: var(--dorado1);
+    padding: 0.2rem;
+    margin: 0.2rem;
+  }
+
+  form#filtro-carta{
+    background-color: var(--marron2);
+  }
+
+  #selectTipo1>option,#selectTipo2>option{
+    color: #23201e;
+  }
+
+  .filtro-usuario{
+    background-color: var(--dorado1);
+  }
+
+  #tabla-usuarios thead{
+    background-color: var(--dorado1);
+  }
+
+  #tabla-usuarios tbody{
+    background-color: var(--marron2);
+  }
+
+  form , .card{
+    background-color: var(--marron2);
+  }
+
+  /*
+  .listamazos{
+    background-color: #673c00;
+    padding: 10px;
+    box-shadow: 2px 2px 10px black;
+    margin-top: 50px;
+    width: 400px;
+  }
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .listamazos li{
+    margin: 10px 0;
+  }
+  .listamazos li>div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .carta{
+    width: 200px;
+    margin: 20px;
+    height: 300px;
+    background-color: #e2843b;
+  }
+
+  #deckbuilder{
+    background-color: #673c00;
+    width: 600px;
+  }
+  #deckbuilder li{
+    display: flex;
+    justify-content: center;
+    margin: 8px 0;
+  }
+
+  input{
+    background-color: #673c00;
+  }*/
