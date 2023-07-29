@@ -39,10 +39,29 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        @if( Auth::user() and Auth::user()->is_admin )
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cartas.index') }}">Cartas</a>
-                        </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Biblioteca
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('biblioteca-c') }}">
+                                        Cartas
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('biblioteca-d') }}">
+                                        Mazos
+                                    </a>
+                                </div>
+                            </li>
+                        @if( Auth::user() )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('creador') }}">Creador de Mazo</a>
+                                </li>
+                            @if( Auth::user()->is_admin )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('cartas.index') }}">Admin</a>
+                                </li>
+                            @endif
                         @endif
                     </ul>
 

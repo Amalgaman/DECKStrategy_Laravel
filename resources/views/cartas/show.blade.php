@@ -43,6 +43,8 @@
             </div>
         </div>
     </div>
-
 </div>
+
+<script type="text/javascript" src="{{ URL::asset('js/confirm.js') }}"></script>
+
 @endsection

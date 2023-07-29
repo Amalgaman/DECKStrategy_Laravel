@@ -22,8 +22,11 @@ class MisDecksController extends Controller
         ->orderBy('nombre')
         ->paginate(10);
 
+        $mazo = [];
+
         return view('misdecks.creador',[
-            'cartas' => $cartas
+            'cartas' => $cartas,
+            'mazo' => $mazo
         ]);
     }
 }
