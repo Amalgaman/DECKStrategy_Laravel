@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartaController;
 use App\Http\Controllers\BibliotecaController;
+use App\Http\Controllers\DecksController;
 use App\Http\Controllers\MisDecksController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     Route::get('/misdecks', [App\Http\Controllers\MisDecksController::class, 'lista'])->name('misdecks');
     Route::get('/creador', [App\Http\Controllers\MisDecksController::class, 'creador'])->name('creador');
+    Route::resource('decks', DecksController::class);
 
     Route::group(['middleware' => ['is_admin']], function(){
        Route::resource('cartas', CartaController::class);

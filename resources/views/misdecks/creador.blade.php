@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="col-3" id="deckbuilder">
-        <form action="">
+        <form action="{{ route('misdecks.createDeck') }}" method="POST">
             <input type="text" name="nombre" id="nombre" placeholder="Nombre del Mazo">
             <button type="submit" class="btn btn-primary my-2">Guardar</button>
         </form>

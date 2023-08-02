@@ -59,7 +59,7 @@ class CartaController extends Controller
                 ->withInput();
         }
 
-        Carta::create([
+        $carta = Carta::create([
             'nombre' => $request->nombre,
             'ataque'=> $request->ataque,
             'salud'=> $request->salud,
