@@ -1,24 +1,3 @@
-/* PARA OCULTAR BARRA DE SCROLL
-::-webkit-scrollbar {
-    display: none;
-    width: 10px;
-  }
-
-  input[type=number]::-webkit-outer-spin-button,
-  input[type=number]::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-  }
-  input[type=number]::-webkit-outer-spin-button,
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-moz-number-spin-box {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      margin: 0;
-  }*/
-/* PARA OCULTAR BARRA DE SCROLL */
-
 /* Variables Globales */
 :root {
   --marron1: #523000;
@@ -31,142 +10,130 @@
   --cremita2:#FFCF8C;
 }
 
-.btn.btn-primary{
+/* Estilos de botón */
+.btn.btn-primary {
   background-color: var(--celeste1);
-  border: #523000;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.btn.btn-primary:hover{
+.btn.btn-primary:hover {
   background-color: var(--celeste2);
 }
 
-a{
-    text-decoration: none;
+/* Estilos de enlaces */
+a {
+  text-decoration: none;
+  color: var(--celeste1);
 }
 
-*{
-    font-family: 'Montserrat';
-    color: white;
-  }
+a:hover {
+  color: var(--celeste2);
+}
 
-  select>option{
-    background-color: var(--gris1);
-  }
-  body {
-    background-color: var(--gris1);
-  }
-  nav {
-    background-color: var(--marron1);
-  }
-  a.nav-link{
-    color: white;
-  }
-  a.activo{
-    font-weight: bold;
-  }
-  .nav-link:hover{
-    color: #fd567a;
-  }
+/* Estilos del cuerpo del documento */
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  background-color: var(--gris1);
+}
 
-  .nav-link.activo:hover{
-    color: #fd567a;
-    text-shadow: 0 0 20px #fa2c8c;
-  }
+/* Estilos de la barra de navegación */
+nav {
+  background-color: var(--marron1);
+  padding: 10px;
+}
 
-  #baner{
-    background-image: url(../img/fondo-baner.jpeg);
-    min-height: 10rem;
+a.nav-link {
+  color: white;
+}
 
-  }
-  .listamazo{
-    background-color: var(--marron1);
-  }
+a.activo {
+  font-weight: bold;
+}
 
-  .img-logo{
-    width: 3rem;
-    height: 3rem;
-  }
+.nav-link:hover {
+  color: var(--celeste1);
+}
 
-  .img-logo-carta-en-mazo{
-    width: 2rem;
-    height: 2rem;
-  }
-  .carta-en-mazo{
-    background-color: var(--marron1);
-  }
+.nav-link.activo:hover {
+  color: var(--celeste1);
+  text-shadow: 0 0 20px var(--celeste1);
+}
 
-  #deckbuilder{
-    background-color: var(--dorado1);
-  }
-  .card-deck{
-    background-color: var(--dorado1);
-    padding: 0.2rem;
-    margin: 0.2rem;
-  }
+/* Estilos del baner */
+#baner {
+  background-image: url(../img/fondo-baner.jpeg);
+  min-height: 10rem;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  form#filtro-carta{
-    background-color: var(--marron2);
-  }
+/* Estilos de la lista de mazos */
+.listamazo {
+  background-color: var(--marron1);
+  padding: 10px;
+  box-shadow: 2px 2px 10px black;
+  margin-top: 50px;
+  width: 400px;
+}
 
-  #selectTipo1>option,#selectTipo2>option{
-    color: #23201e;
-  }
+/* Estilos del deckbuilder */
+#deckbuilder {
+  background-color: var(--dorado1);
+}
 
-  .filtro-usuario{
-    background-color: var(--dorado1);
-  }
+/* Estilos del formulario de filtro de cartas */
+form#filtro-carta {
+  background-color: var(--marron2);
+}
 
-  #tabla-usuarios thead{
-    background-color: var(--dorado1);
-  }
+/* Estilos de la tabla de usuarios */
+#tabla-usuarios thead {
+  background-color: var(--dorado1);
+}
 
-  #tabla-usuarios tbody{
-    background-color: var(--marron2);
-  }
+#tabla-usuarios tbody {
+  background-color: var(--marron2);
+}
 
-  form , .card{
-    background-color: var(--marron2);
-  }
+/* Estilos de otros formularios y cartas adicionales */
+form, .card {
+  background-color: var(--marron2);
+}
 
-  /*
-  .listamazos{
-    background-color: #673c00;
-    padding: 10px;
-    box-shadow: 2px 2px 10px black;
-    margin-top: 50px;
-    width: 400px;
-  }
-  ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .listamazos li{
-    margin: 10px 0;
-  }
-  .listamazos li>div{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+/* Estilos adicionales */
+.img-logo {
+  width: 3rem;
+  height: 3rem;
+}
 
-  .carta{
-    width: 200px;
-    margin: 20px;
-    height: 300px;
-    background-color: #e2843b;
-  }
+.img-logo-carta-en-mazo {
+  width: 2rem;
+  height: 2rem;
+}
 
-  #deckbuilder{
-    background-color: #673c00;
-    width: 600px;
-  }
-  #deckbuilder li{
-    display: flex;
-    justify-content: center;
-    margin: 8px 0;
-  }
+.card-deck {
+  background-color: var(--dorado1);
+  padding: 0.2rem;
+  margin: 0.2rem;
+}
 
-  input{
-    background-color: #673c00;
-  }*/
+select > option {
+  background-color: var(--gris1);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-moz-number-spin-box {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
