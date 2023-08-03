@@ -137,3 +137,10 @@ input[type="number"]::-moz-number-spin-box {
   appearance: none;
   margin: 0;
 }
+
+.centrado {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

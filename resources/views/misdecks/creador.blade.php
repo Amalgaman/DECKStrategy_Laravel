@@ -14,8 +14,8 @@
                 <div class="col-5 col-lg-2 m-3"><a href="" id="{{$carta->id}}"><img class="img-fluid" src="{{$carta->img_chica}}" alt="..."></a></div>
             @endforeach
             </div>
-            <div class="row justify-content-center">
-                <div class="col col-md-5">
+            <div class="row justify-content-center p-5">
+                <div class="col col-md-5 pagination justify-content-center">
                     {{ $cartas->links() }}
                 </div>
             </div>
