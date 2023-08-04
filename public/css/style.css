@@ -150,14 +150,14 @@ input[type="number"]::-moz-number-spin-box {
 }
 
 .image-container {
-  overflow: hidden; 
-  height: 100%; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.img-fluid:hover {
-  transform: scale(2.0); 
-  transition: transform 0.3s ease; 
+.img-carta:hover {
+  transform: scale(2.0);
+  transition: transform 0.3s ease;
 }
