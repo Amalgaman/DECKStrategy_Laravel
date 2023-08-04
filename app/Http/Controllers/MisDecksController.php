@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\Carta;
+use Illuminate\Support\Facades\Auth;
+use stdClass;
 
 class MisDecksController extends Controller
 {
@@ -35,9 +37,11 @@ class MisDecksController extends Controller
     }
 
     public function createDeck(Request $request){
+/*
+        $idUser = Auth::user()->id;
+
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|max:255',
-            'id_user' => 'required|integer|min:1',
         ]);
 
         if($validator->fails()){
@@ -49,14 +53,31 @@ class MisDecksController extends Controller
 
         $deck = Deck::create([
             'nombre' => $request->nombre,
-            'id_user'=> $request->id_user,
+            'id_user'=> $idUser,
         ]);
+*/
+        $ret = new stdClass();
+        $ret->codigo = 200;
+        $ret->mensaje = "Se creo";
 
+        return $ret;
 
-
-        return redirect()
-        ->route('biblioteca-d')
-        ->with('status','El deck se creo con exito');
+        //return redirect()
+        //->route('biblioteca-d')
+        //->with('status','El deck se creo con exito');
     }
+
+    public function getCartas(Request $request){
+        dd($request);
+
+        $cartas = Carta::where('id','=',0)
+        ->orderBy('nombre');
+
+        $res = "asdasd";
+
+        return response()->json(
+            ['data' => $res]);
+    }
+
     }
 

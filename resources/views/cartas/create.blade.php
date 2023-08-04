@@ -18,7 +18,7 @@
     </div>
     <div class="row">
         <div class="col justify-content-center">
-            <form class="py-3 px-4"action="{{ route('cartas.store') }}" method="POST">
+            <form class="py-3 px-4" action="{{ route('cartas.store') }}" method="POST">
                 @csrf
                 <div class="row mb-2">
                     <div class="col">

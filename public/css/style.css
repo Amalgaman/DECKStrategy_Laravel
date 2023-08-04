@@ -29,6 +29,7 @@
   --celeste2:#70C5FA;
   --cremita1:#FAC170;
   --cremita2:#FFCF8C;
+  --bs-tertiary-bg-rgb:var(--marron1) !important;
 }
 
 .btn.btn-primary{

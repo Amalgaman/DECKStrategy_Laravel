@@ -33,7 +33,8 @@ Route::group(['middleware' => ['auth']], function(){
 
     Route::get('/misdecks', [App\Http\Controllers\MisDecksController::class, 'lista'])->name('misdecks');
     Route::get('/creador', [App\Http\Controllers\MisDecksController::class, 'creador'])->name('creador');
-    Route::resource('decks', DecksController::class);
+    Route::post('/createDeck', [App\Http\Controllers\MisDecksController::class, 'createDeck'])->name('createDeck');
+    Route::get('/getCartas', [App\Http\Controllers\MisDecksController::class, 'getCartas'])->name('getCartas');
 
     Route::group(['middleware' => ['is_admin']], function(){
        Route::resource('cartas', CartaController::class);
