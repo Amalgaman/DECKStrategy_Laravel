@@ -13,23 +13,32 @@
             @endif
 
             {{-- Pagination Elements --}}
-            @foreach ($elements as $element)
-                {{-- "Three Dots" Separator --}}
-                @if (is_string($element))
-                    <li class="page-item disabled" aria-disabled="true"><span class="page-link">{{ $element }}</span></li>
-                @endif
+            @php
+                $maxPages = 5; // Número máximo de enlaces de página que deseas mostrar
+                $halfMax = floor($maxPages / 2);
+                $currentPage = $paginator->currentPage();
+                $lastPage = $paginator->lastPage();
+                $start = $currentPage - $halfMax;
+                if ($start <= 0) {
+                    $start = 1;
+                }
+                $end = $start + $maxPages - 1;
+                if ($end > $lastPage) {
+                    $end = $lastPage;
+                    $start = $end - $maxPages + 1;
+                    if ($start <= 0) {
+                        $start = 1;
+                    }
+                }
+            @endphp
 
-                {{-- Array Of Links --}}
-                @if (is_array($element))
-                    @foreach ($element as $page => $url)
-                        @if ($page == $paginator->currentPage())
-                            <li class="page-item active" aria-current="page"><span class="page-link">{{ $page }}</span></li>
-                        @else
-                            <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
-                        @endif
-                    @endforeach
+            @for ($page = $start; $page <= $end; $page++)
+                @if ($page == $paginator->currentPage())
+                    <li class="page-item active" aria-current="page"><span class="page-link">{{ $page }}</span></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{ $paginator->url($page) }}">{{ $page }}</a></li>
                 @endif
-            @endforeach
+            @endfor
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())

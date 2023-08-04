@@ -48,8 +48,11 @@
 
       </tbody>
     </table>
-
-    {{ $cartas->links() }}
+    <div class="row justify-content-center p-5 z-0">
+      <div class="col col-md-5 pagination justify-content-center">
+           {{ $cartas->links() }}
+      </div>
+  </div>
     </div>
   </div>
 </section>

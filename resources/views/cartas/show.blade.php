@@ -14,12 +14,12 @@
         </div>
     @endif
 
-    <div class="row">
+    <div class="row text-center">
         <div class="col-10 offset-1">
         <div class="card mb-3">
             <div class="row g-0">
                 <div class="col-md-4">
-                <img src="{{ $carta->img_grande }}" class="img-fluid rounded-start" alt="...">
+                <img src="{{ $carta->img_grande }}" class="img-fluid rounded-start img-carta-chica" alt="...">
                 </div>
                 <div class="col-8">
                 <div class="card-body">
