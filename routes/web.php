@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/creador', [App\Http\Controllers\MisDecksController::class, 'creador'])->name('creador');
     Route::post('/createDeck', [App\Http\Controllers\MisDecksController::class, 'createDeck'])->name('createDeck');
     Route::get('/getCartas', [App\Http\Controllers\MisDecksController::class, 'getCartas'])->name('getCartas');
+    Route::resource('decks', DecksController::class);
+
 
     Route::group(['middleware' => ['is_admin']], function(){
        Route::resource('cartas', CartaController::class);
