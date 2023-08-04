@@ -17,7 +17,7 @@
         <a href="{{ route('cartas.create')}}" class="btn btn-primary">Crear Nueva Carta</a>
     </div>
   </div>
-  <div class="row">
+  <div class="row text-center">
     <div class="col mx-2">
     <table class="table" id="tabla-usuarios">
       <thead>
