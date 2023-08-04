@@ -93,23 +93,24 @@ function refrescar(cartas){
 
 function guardar(){
 
-    console.log('entro');
-    fetch("http://127.0.0.1:8000/createDeck", {
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-          "X-Requested-With": "XMLHttpRequest",
-          "X-CSRF-Token": token
+    console.log(cartasDeck);
+
+    $.ajax({
+        url: 'createDeck',
+        method: "POST",
+            data: {
+                '_token': token,
+                'cartas': cartasDeck,
         },
-        method: "post",
-        credentials: "same-origin",
-        body: JSON.stringify({
-          'cartas': cartasDeck
-        })
-      }).then(function(response){
-        res = response.json();
-        console.log(res);
-    })
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+        },
+        error: function(e)
+        {
+            console.log(e);
+        }
+    });
 }
 
 
