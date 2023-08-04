@@ -5,7 +5,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col text-center p-5">
-            <h1>Biblioteca de cartas</h1>
+            <h1>Lista del Mazo</h1>
         </div>
     </div>
     <div class="row justify-content-evenly mt-3 mb-5 text-center z-1">
