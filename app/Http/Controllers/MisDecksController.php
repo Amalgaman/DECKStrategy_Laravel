@@ -58,7 +58,7 @@ class MisDecksController extends Controller
 */
         $ret = new stdClass();
         $ret->codigo = 200;
-        $ret->mensaje = "Se creo";
+        $ret->asdasd = $request->cartas;
 
         return $ret;
 
