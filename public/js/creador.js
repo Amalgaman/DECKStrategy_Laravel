@@ -48,22 +48,27 @@ function refrescar(cartas){
 
     VDeck.innerHTML = '';
 
+
+
+    //crea los contenedores de cartas en mazo
     cartas.forEach((carta) => {
         let Vcarta = document.createElement("div");
         Vcarta.innerHTML = `
-        <div id="${carta[0]}" class="carta-en-mazo d-flex justify-content-between my-2 px-2">
+        <a href="" id="${carta[0]}" class="carta-en-mazo d-flex justify-content-between my-2 px-2">
         <p>${carta[0]} x${carta[1]}</p>
         <div class="d-flex">
             <img class="img-logo-carta-en-mazo" src="./img/logo-rojo.png" alt="...">
         </div>
-        </div>`;
+        </a>`;
       VDeck.appendChild(Vcarta);
     });
 
+    //Selecciona contenedores
     VCartas = document.querySelectorAll('.carta-en-mazo');
 
     let aux=-1;
 
+    //Programa comportamiento para quitar carta del mazo en todos los contenedores
     VCartas.forEach((vcarta) => {
         vcarta.addEventListener("click", (event) => {
 

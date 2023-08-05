@@ -13,7 +13,7 @@ class DecksController extends Controller
 {
     public function show(Deck $deck){
 
-        $cartas = Cartas::where('id','=',0)
+        $cartas = Carta::where('id','=',0)
         ->orderBy('nombre')
         ->paginate(10);
 
