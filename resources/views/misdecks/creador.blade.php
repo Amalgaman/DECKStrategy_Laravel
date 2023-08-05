@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="col-3" id="deckbuilder">
+        <div class="col-3 shadow-lg" id="deckbuilder">
         <!-- <form action="{{ route('createDeck') }}" method="POST"> -->
             <!-- @csrf-->
             <input type="text" name="nombre" id="nombre" placeholder="Nombre del Mazo">
