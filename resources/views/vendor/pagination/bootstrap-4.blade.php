@@ -14,24 +14,29 @@
 
             {{-- Pagination Elements --}}
             @php
-                $maxPages = 5; // Número máximo de enlaces de página que deseas mostrar
+                $maxPages = 5; 
                 $halfMax = floor($maxPages / 2);
                 $currentPage = $paginator->currentPage();
                 $lastPage = $paginator->lastPage();
-                $start = $currentPage - $halfMax;
-                if ($start <= 0) {
-                    $start = 1;
-                }
-                $end = $start + $maxPages - 1;
-                if ($end > $lastPage) {
-                    $end = $lastPage;
-                    $start = $end - $maxPages + 1;
-                    if ($start <= 0) {
-                        $start = 1;
-                    }
+                $start = max($currentPage - $halfMax, 1); 
+                $end = min($start + $maxPages - 1, $lastPage); 
+
+                if ($end - $start + 1 < $maxPages) {
+                    $start = max($end - $maxPages + 1, 1);
                 }
             @endphp
 
+            {{-- Show the first page link if there are more pages to show --}}
+            @if ($start > 1)
+                <li class="page-item"><a class="page-link" href="{{ $paginator->url(1) }}">1</a></li>
+                @if ($start > 2)
+                    <li class="page-item disabled" aria-disabled="true">
+                        <span class="page-link">...</span>
+                    </li>
+                @endif
+            @endif
+
+            {{-- Loop through the pages --}}
             @for ($page = $start; $page <= $end; $page++)
                 @if ($page == $paginator->currentPage())
                     <li class="page-item active" aria-current="page"><span class="page-link">{{ $page }}</span></li>
@@ -39,6 +44,16 @@
                     <li class="page-item"><a class="page-link" href="{{ $paginator->url($page) }}">{{ $page }}</a></li>
                 @endif
             @endfor
+
+            {{-- Show the last page link if there are more pages to show --}}
+            @if ($end < $lastPage)
+                @if ($end < $lastPage - 1)
+                    <li class="page-item disabled" aria-disabled="true">
+                        <span class="page-link">...</span>
+                    </li>
+                @endif
+                <li class="page-item"><a class="page-link" href="{{ $paginator->url($lastPage) }}">{{ $lastPage }}</a></li>
+            @endif
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
