@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carta;
 use App\Models\Deck;
+use App\Models\lista_deck;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -13,25 +14,21 @@ class DecksController extends Controller
 {
     public function show(Deck $deck){
 
-        $cartas = Carta::where('id','=',0)
-        ->orderBy('nombre')
-        ->paginate(10);
+        $deckId = $deck->id;
 
-/*
-        $lista = lista_deck::where('id','=',$deck->id)
-        ->orderBy('nombre')
-        ->paginate(10);
+        $listaCartas = lista_deck::where('id','=',$deckId)
+        ->get();
 
-        foreach($lista as $l){
-            $carta = Carta::where('id','=',$l->id)
-        ->orderBy('nombre')
-        ->paginate(10);
+        foreach($listaCartas as $l){
+            $carta = Carta::where('id','=',$l->id_carta)
+            ->first();
+
+            $carta->copias = $l->copias;
 
 
+        array_push($cartas, $carta);
+    }
 
-            $cartas.push($carta);
-        }
-*/
         return view('decks.show',[
             'cartas' => $cartas,
         ]);
