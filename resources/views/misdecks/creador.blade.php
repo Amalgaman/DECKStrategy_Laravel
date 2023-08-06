@@ -11,7 +11,7 @@
         <div class="col-8">
             <div class="row justify-content-evenly mt-3">
             @foreach ($cartas as $carta)
-                <div class="col-5 col-lg-2 m-3"><div id="{{$carta->id}}" class="carta-a"><img class="img-fluid" src="{{$carta->img_chica}}" alt="..."></div></div>
+                <div class="col-5 col-lg-2 m-3"><div id="{{$carta->id}}" class="carta-a"><img class="img-fluid img-carta z-1" src="{{$carta->img_grande}}" alt="..."></div></div>
             @endforeach
             </div>
             <div class="row justify-content-center p-5">
@@ -22,11 +22,16 @@
         </div>
 
         <div class="col-3" id="deckbuilder">
-        <!-- <form action="{{ route('createDeck') }}" method="POST"> -->
-            <!-- @csrf-->
-            <input type="text" name="nombre" id="nombre" placeholder="Nombre del Mazo">
-            <button type="submit" class="btn btn-primary my-2" onclick="guardar()">Guardar</button>
-        <!-- </form> -->
+
+            <div class="d-flex">
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre del Mazo">
+                <span class="badge text-bg-primary" id="contador">Total: 0/30</span>
+            </div>
+            <div class="d-flex">
+                <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion">
+                <button id="guardar" type="submit" class="btn btn-primary my-2" onclick="guardar()">Guardar</button>
+            </div>
+
         <div id="verDeck">
         </div>
      </div>

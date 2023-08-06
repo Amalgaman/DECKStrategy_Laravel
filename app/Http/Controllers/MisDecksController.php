@@ -8,18 +8,31 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\Carta;
+use App\Models\lista_deck;
+use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use stdClass;
 
 class MisDecksController extends Controller
 {
     public function lista(){
-        $cartas = Carta::where('id','>',0)
+        $decks = Deck::where('id','>',0)
         ->orderBy('nombre')
-        ->paginate(10);
+        ->paginate(12);
+
+        foreach($decks as $dataDeck){
+
+            $user = User::where('id','=',$dataDeck->id_user)
+            ->orderBy('name')
+            ->first();
+
+            $dataDeck->id_user = $user->name;
+        }
+
 
         return view('misdecks.lista',[
-            'cartas' => $cartas
+            'decks' => $decks
         ]);
     }
 
@@ -28,20 +41,17 @@ class MisDecksController extends Controller
         ->orderBy('nombre')
         ->paginate(10);
 
-        $mazo = [];
-
         return view('misdecks.creador',[
             'cartas' => $cartas,
-            'mazo' => $mazo
         ]);
     }
 
     public function createDeck(Request $request){
-/*
         $idUser = Auth::user()->id;
 
         $validator = Validator::make($request->all(), [
-            'nombre' => 'required|max:255',
+            'nombre' => 'required|max:50',
+            'descripcion' => 'required|max:100',
         ]);
 
         if($validator->fails()){
@@ -53,30 +63,51 @@ class MisDecksController extends Controller
 
         $deck = Deck::create([
             'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
             'id_user'=> $idUser,
         ]);
-*/
+
+        foreach($request->cartas as $carta){
+            lista_deck::create([
+                'id_deck'=> $deck->id,
+                'id_carta'=> $carta[0],
+                'copias'=> $carta[1],
+            ]);
+        }
+
         $ret = new stdClass();
         $ret->codigo = 200;
-        $ret->asdasd = $request->cartas;
+        $ret->message = "Mazo creado exisotasamente!";
 
-        return $ret;
-
-        //return redirect()
-        //->route('biblioteca-d')
-        //->with('status','El deck se creo con exito');
+        return response()->json(
+            [
+                "response" => $ret
+            ]
+        );
     }
 
     public function getCartas(Request $request){
-        dd($request);
 
-        $cartas = Carta::where('id','=',0)
-        ->orderBy('nombre');
+        $cartas = [];
 
-        $res = "asdasd";
+        foreach($request->ids as $idCarta){
+            $carta = Carta::where('id','=',$idCarta)
+                    ->orderBy('nombre')
+                    ->first();
+
+            array_push($cartas,$carta);
+        };
+
+        $ret = new stdClass();
+        $ret->codigo = 200;
+        $ret->cartas = $cartas;
 
         return response()->json(
-            ['data' => $res]);
+            [
+                "response" => $ret
+            ]
+            );
+
     }
 
     }

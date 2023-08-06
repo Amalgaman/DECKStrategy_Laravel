@@ -10,6 +10,7 @@ class Deck extends Model
     use HasFactory;
     protected $fillable = [
         'nombre',
+        'descripcion',
         'id_user',
     ];
 }

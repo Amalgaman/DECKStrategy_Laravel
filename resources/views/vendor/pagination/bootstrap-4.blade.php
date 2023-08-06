@@ -14,12 +14,12 @@
 
             {{-- Pagination Elements --}}
             @php
-                $maxPages = 5; 
+                $maxPages = 5;
                 $halfMax = floor($maxPages / 2);
                 $currentPage = $paginator->currentPage();
                 $lastPage = $paginator->lastPage();
-                $start = max($currentPage - $halfMax, 1); 
-                $end = min($start + $maxPages - 1, $lastPage); 
+                $start = max($currentPage - $halfMax, 1);
+                $end = min($start + $maxPages - 1, $lastPage);
 
                 if ($end - $start + 1 < $maxPages) {
                     $start = max($end - $maxPages + 1, 1);
