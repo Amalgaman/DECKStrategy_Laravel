@@ -120,13 +120,14 @@ function refrescar(cartas, contador){
 
                     let Vcarta = document.createElement("div");
                     Vcarta.innerHTML = `
-                    <div id="${carta.id}" class="carta-en-mazo d-flex justify-content-between my-2 px-2">
+                    <div style="background-image: url('https://cards.scryfall.io/art_crop/front/7/2/72864eb8-c5b6-4f01-b511-124acffc9bfc.jpg?1681987949%27');background-size:cover;height:50px">
+                    <div id="${carta.id}" class="carta-en-mazo d-flex justify-content-between px-2" style="background-color:rgba(0, 0, 0, 0.38);align-items:center;height:50px" >
                     <div class="d-flex">
                         ${Vcolor}
                     </div>
-                    <p>${carta.nombre}</p>
-                    <span class="badge text-bg-primary">x${carta.cantidad}</span>
-                    </div>`;
+                    ${carta.nombre}
+                    <span class="badge text-bg-secondary" style="height:35px;font-size:20px">x${carta.cantidad}</span>
+                    </div></div>`;
                 VDeck.appendChild(Vcarta);
                 });
 
