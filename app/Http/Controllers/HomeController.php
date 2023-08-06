@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carta;
 use App\Models\Deck;
+use App\Models\lista_deck;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,12 +31,18 @@ class HomeController extends Controller
         ->orderBy('nombre')
         ->get();
 
+        $decksArray = [];
+
+        foreach($decksTodos as $deck){
+            array_push($decksArray, $deck);
+        }
+
         $decks = [];
 
-        shuffle($decksTodos);
+        shuffle($decksArray);
 
         for ($i = 1; $i <= 15; $i++) {
-            array_push($decks, $decksTodos[$i]);
+            array_push($decks, $decksArray[$i]);
         }
 
         foreach($decks as $dataDeck){
@@ -78,7 +86,8 @@ class HomeController extends Controller
 
         }
 
-
-        return view('home');
+        return view('home',[
+            'decks' => $decks,
+        ]);
     }
 }
