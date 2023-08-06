@@ -10,8 +10,8 @@
     </div>
     <div class="row justify-content-evenly mt-3 mb-5 z-1">
     @foreach ($decks as $deck)
-    <div class="deck">
-        <a href="{{ route('decks.show', $deck)}}">
+
+        <a href="{{ route('decks.show', $deck)}}" class="deck">
             <div>
                 <div class="fondo" style="background-image: url('{{ $deck->img }}');">
                 @foreach ($deck->colores as $color)
@@ -39,8 +39,8 @@
                 <p>{{ $deck->descripcion }}</p>
             </div>
         </a>
-        <button type="button" class="btn btn-danger mt-2" >Borrar Mazo</button>
-        </div>
+        <!--<button type="button" class="btn btn-danger mt-2" >Borrar Mazo</button>-->
+
     @endforeach
     </div>
     <div class="row justify-content-center p-5 z-0">

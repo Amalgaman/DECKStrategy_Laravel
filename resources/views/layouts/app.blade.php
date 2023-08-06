@@ -65,9 +65,20 @@
                                     <a class="nav-link" href="{{ route('creador') }}">Creador de Mazo</a>
                                 </li>
                             @if( Auth::user()->is_admin )
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('cartas.index') }}">Admin</a>
-                                </li>
+                                <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Administrador
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('cartas.index') }}">
+                                        Cartas
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">
+                                        Usuarios
+                                    </a>
+                                </div>
+                            </li>
                             @endif
                         @endif
                     </ul>
@@ -142,6 +153,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+    <footer>
+
+    </footer>
     </div>
 </body>
 </html>

@@ -11,10 +11,6 @@ let inDeck;
 
 var token = document.getElementsByName("_token")[0].value;
 
-console.log(token);
-
-console.log(sessionStorage.getItem('deck'));
-
 if(sessionStorage.getItem('deck')){
     cartasDeck = sessionStorage.getItem('deck');
     cartasDeck = JSON.parse(cartasDeck);
@@ -44,7 +40,6 @@ cartasBiblio.forEach((cartaA) => {
 
         sessionStorage.setItem('deck', JSON.stringify(cartasDeck));
 
-        console.log(sessionStorage.getItem('deck'));
       });
 });
 
@@ -74,7 +69,7 @@ function refrescar(cartas, contador){
         },
         dataType: "json",
         success: function (data) {
-            console.log(data);
+
             dataCartas = data.response.cartas;
 
             dataCartas.forEach((dataCarta) => {
@@ -88,8 +83,6 @@ function refrescar(cartas, contador){
             //crea los contenedores de cartas en mazo
                 dataCartas.forEach((carta) => {
                     let Ccolor = carta.color.split(' ');
-
-                    console.log(Ccolor);
 
                     let Vcolor = "";
 
@@ -156,28 +149,31 @@ function refrescar(cartas, contador){
                             cartas.splice(aux, 1);
                         }
 
-                        refrescar(cartas);
+                        refrescar(cartas,contador);
 
                         sessionStorage.setItem('deck', JSON.stringify(cartas));
 
-                        console.log(sessionStorage.getItem('deck'));
                     });
                 });
         },
         error: function(e)
         {
             console.log('Rompio al cargar cartas del deck xd');
+            alert("Ocurrio un error al momento de crear el mazo, intentelo nuevamente");
         }
     });
 }
 }
 
 function contar(cartas, contador){
+
     contador = 0;
 
+    if (cartas.length > 0){
     cartas.forEach((carta)=>{
         contador = contador+carta[1];
     });
+    }
 
     VContador.innerHTML = `Total: ${contador}/30`;
 
@@ -187,14 +183,13 @@ function contar(cartas, contador){
         boton.disabled = true;
     }
 
+
 }
 
 function guardar(){
 
     let nombre = document.getElementById("nombre").value;
     let descripcion = document.getElementById("descripcion").value;
-
-    console.log(cartasDeck);
 
     $.ajax({
         url: 'createDeck',
@@ -207,11 +202,19 @@ function guardar(){
         },
         dataType: "json",
         success: function (data) {
-            console.log(data);
+
+            sessionStorage.setItem('deck', []);
+
+            let cartas = sessionStorage.getItem('deck');
+
+            refrescar(cartas,contador);
+
+            alert("El Mazo se creo correctamente");
         },
         error: function(e)
         {
             console.log(e);
+            alert("Ocurrio un error al momento de crear el mazo, intentelo nuevamente");
         }
     });
 }

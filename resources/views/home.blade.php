@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<section id="baner" class="mt-5">
+  <h1 class="text-center p-5">Bienvenido a DECKStrategy</h1>
+  <a href="#info" class="btn btn-secondary mt-2" >Conocenos</a>
+</section>
+
 <div class="contenedor">
     <div class="seccion">
         <div>
@@ -112,8 +117,10 @@
     </div>
 
     <div id="info">
-        <h1>Quienes somos</h1>
+        <h1>¿Quienes somos?</h1>
         <p>Somos una empresa llena de gente apasionada por los videojuegos y los juegos de mesa, en especial los juegos de cartas. Nuestro objetivo es fomentar una gran comunidad de jugadores donde todos puedan ayudarse y mejorar. Como planes a futuro nos encantaría poder facilitar la organización de torneos y expandirnos a mercados aún más grandes para aumentar la base de jugadores. </p>
+        <p>Ademas de proponer herramientas interactivas que faciliten la experiencia de los jugadores de todo tipo de juegos de mesa y videojuegos, si sos jugador de Magic animate a probar nuestra pagina.</p>
+        <a href="">atencion.cliente@DECKStrategy.com</a>
     </div>
     </div>
 @endsection

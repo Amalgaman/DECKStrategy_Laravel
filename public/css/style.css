@@ -42,6 +42,9 @@ body {
   background-color: var(--gris1);
 }
 
+nav.bg-body-tertiary{
+    background-color: var(--marron1)!important;
+}
 
 a.nav-link {
   color: white;
@@ -179,7 +182,7 @@ input[type="number"]::-moz-number-spin-box {
     border-radius: 1px;
   }
 
-  .seccion, .deck{
+  .deck{
     justify-self: center;
     background-color: var(--marron1);
     list-style: none;
@@ -190,8 +193,24 @@ input[type="number"]::-moz-number-spin-box {
     box-sizing: border-box;
   }
 
+  .seccion{
+    justify-self: center;
+    background-color: var(--marron2);
+    list-style: none;
+    width: 300px;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 20px;
+    box-sizing: border-box;
+  }
+
   .deck{
     width: 250px;
+    color: aliceblue;
+  }
+
+  .deck:hover{
+    color: orange;
   }
 
   .mazos{
@@ -233,6 +252,7 @@ input[type="number"]::-moz-number-spin-box {
 
   #info h1{
     background-color: var(--dorado1);
+    font-size: 3rem;
     padding: 20px;
     border-radius: 20px;
     border-bottom-left-radius: 0;
@@ -242,7 +262,15 @@ input[type="number"]::-moz-number-spin-box {
 
   #info p{
     text-align: left;
-    padding: 0 10px;
+    padding: 15px 50px;
+    font-size: 1rem;
+  }
+
+  #info a{
+    text-align: left;
+    padding: 15px 50px;
+    color:aliceblue;
+    font-size: 1.5rem;
   }
 
 

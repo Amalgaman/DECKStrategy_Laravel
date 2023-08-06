@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartaController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BibliotecaController;
 use App\Http\Controllers\DecksController;
 use App\Http\Controllers\MisDecksController;
@@ -35,16 +36,17 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/creador', [App\Http\Controllers\MisDecksController::class, 'creador'])->name('creador');
     Route::post('/createDeck', [App\Http\Controllers\MisDecksController::class, 'createDeck'])->name('createDeck');
     Route::get('/getCartas', [App\Http\Controllers\MisDecksController::class, 'getCartas'])->name('getCartas');
-    Route::resource('decks', DecksController::class);
+
 
 
     Route::group(['middleware' => ['is_admin']], function(){
        Route::resource('cartas', CartaController::class);
+       Route::resource('users', UserController::class);
     });
 });
 
 Auth::routes();
-
+Route::resource('decks', DecksController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/biblioteca-c', [App\Http\Controllers\BibliotecaController::class, 'cartas'])->name('biblioteca-c');
