@@ -10,7 +10,7 @@
     </div>
     <div class="row justify-content-evenly mt-3 mb-5 text-center z-1">
     @foreach ($cartas as $carta)
-        <div class="col-5 col-lg-2 m-3"><img class="img-fluid img-carta" src="{{$carta->img_grande}}" alt="..."></div>
+        <div class="col-5 col-lg-2 m-3 shadow-lg"><img class="img-fluid img-carta" src="{{$carta->img_grande}}" alt="..."></div>
     @endforeach
     </div>
     <div class="row justify-content-center p-5 z-0">

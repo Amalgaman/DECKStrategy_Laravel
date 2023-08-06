@@ -19,7 +19,7 @@
   </div>
   <div class="row text-center">
     <div class="col mx-2">
-    <table class="table" id="tabla-usuarios">
+    <table class="table  shadow-lg" id="tabla-usuarios">
       <thead>
         <tr>
         <th scope="col">Imagen</th>
