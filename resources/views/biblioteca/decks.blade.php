@@ -8,21 +8,37 @@
             <h1>Biblioteca de Mazos</h1>
         </div>
     </div>
-    <div class="row justify-content-evenly mt-3 mb-5 text-center z-1">
+    <div class="row justify-content-evenly mt-3 mb-5 z-1">
     @foreach ($decks as $deck)
-        <div class="deck">
+        <a class="deck" href="{{ route('decks.show', $deck)}}">
             <div>
-                <div class="fondo"style="background-image: url('https://cards.scryfall.io/art_crop/front/7/2/72864eb8-c5b6-4f01-b511-124acffc9bfc.jpg?1681987949%27); background-size: cover">
+                <div class="fondo" style="background-image: url('{{ $deck->img }}');">
+                @foreach ($deck->colores as $color)
+                    @if($color == "B")
                     <img src="./img/logo-blanco.png" alt="asas">
-                    <img src="./img/logo-blanco.png" alt="asas">
-                    <img src="./img/logo-blanco.png" alt="asas">
-                    <img src="./img/logo-blanco.png" alt="asas">
+                    @endif
+                    @if($color == "A")
+                    <img src="./img/logo-azul.png" alt="asas">
+                    @endif
+                    @if($color == "R")
+                    <img src="./img/logo-rojo.png" alt="asas">
+                    @endif
+                    @if($color == "N")
+                    <img src="./img/logo-negro.png" alt="asas">
+                    @endif
+                    @if($color == "V")
+                    <img src="./img/logo-Verde.png" alt="asas">
+                    @endif
+                    @if($color == "I")
+                    <img src="./img/logo-incoloro.png" alt="asas">
+                    @endif
+                @endforeach
                 </div>
                 <h3>{{ $deck->nombre }}</h3>
                 <p>{{ $deck->descripcion }}</p>
             </div>
-            <span>{{ $deck->id_user }}</span>
-        </div>
+            <span>Creado por {{ $deck->id_user }}</span>
+        </a>
     @endforeach
     </div>
     <div class="row justify-content-center p-5 z-0">

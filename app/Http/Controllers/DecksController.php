@@ -15,8 +15,9 @@ class DecksController extends Controller
     public function show(Deck $deck){
 
         $deckId = $deck->id;
+        $cartas = [];
 
-        $listaCartas = lista_deck::where('id','=',$deckId)
+        $listaCartas = lista_deck::where('id_deck','=',$deckId)
         ->get();
 
         foreach($listaCartas as $l){
@@ -31,6 +32,7 @@ class DecksController extends Controller
 
         return view('decks.show',[
             'cartas' => $cartas,
+            'deck' => $deck,
         ]);
     }
 }

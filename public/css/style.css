@@ -154,14 +154,20 @@ input[type="number"]::-moz-number-spin-box {
 }
 
 .img-carta:hover {
-  transform: scale(2.0);
+  transform: scale(1.7);
   transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+.img-carta{
+    z-index:1;
 }
 
 .img-carta-chica:hover {
   transform: scale(1.3);
   transition: transform 0.3s ease;
 }
+
 .contenedor, .biblioteca{
     display: flex;
     flex-wrap: wrap;

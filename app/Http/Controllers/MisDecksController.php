@@ -17,22 +17,53 @@ use stdClass;
 class MisDecksController extends Controller
 {
     public function lista(){
-        $decks = Deck::where('id','>',0)
+
+        $idUser = Auth::user()->id;
+
+        $decks = Deck::where('id_user','=',$idUser)
         ->orderBy('nombre')
         ->paginate(12);
 
+        $userName = Auth::user()->name;
+
         foreach($decks as $dataDeck){
 
-            $user = User::where('id','=',$dataDeck->id_user)
-            ->orderBy('name')
-            ->first();
+            $deckColores = [];
+            $deckImg = "";
 
-            $dataDeck->id_user = $user->name;
+            $cartas = [];
+
+            $listaCartas = lista_deck::where('id_deck','=',$dataDeck->id)
+            ->get();
+
+            foreach($listaCartas as $l){
+                $carta = Carta::where('id','=',$l->id_carta)
+                ->first();
+
+            array_push($cartas, $carta);
+            }
+
+            foreach($cartas as $carta){
+
+                $coloresCarta = explode(" ",$carta->color);
+
+                foreach($coloresCarta as $color){
+                    if (!in_array($color, $deckColores)) {
+                        array_push($deckColores, $color);
+                    }
+                }
+            }
+
+            shuffle($cartas);
+
+            $dataDeck->colores = $deckColores;
+            $dataDeck->img = $cartas[0]->img_sola;
+
         }
 
-
         return view('misdecks.lista',[
-            'decks' => $decks
+            'decks' => $decks,
+            'user' => $userName,
         ]);
     }
 

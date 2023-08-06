@@ -58,6 +58,9 @@
                                 </div>
                             </li>
                         @if( Auth::user() )
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('misdecks') }}">Mis Mazos</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('creador') }}">Creador de Mazo</a>
                                 </li>
