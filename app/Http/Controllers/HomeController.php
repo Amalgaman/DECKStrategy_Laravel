@@ -41,7 +41,7 @@ class HomeController extends Controller
 
         shuffle($decksArray);
 
-        for ($i = 1; $i <= 15; $i++) {
+        for ($i = 1; $i <= 9; $i++) {
             array_push($decks, $decksArray[$i]);
         }
 
